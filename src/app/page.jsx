@@ -22,7 +22,7 @@ function Home() {
     <div className="home">
       <div className="top">
         <div className="welcomeText">
-          <h1>What's your mood !</h1>
+          <h1>{`What's your mood !`}</h1>
           <p>Our recommendations based on your taste !</p>
         </div>
         <ListOfGenres></ListOfGenres>
