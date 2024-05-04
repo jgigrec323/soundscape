@@ -149,9 +149,9 @@ function AudioPlayer() {
         audio.addEventListener('ended', () => {
             setIsPlaying(false);
             // Play next song if loop is on, else do nothing
-            if (loop) {
-                playNextSong();
-            }
+            /*  if (loop) {
+                 playNextSong();
+             } */
         });
 
         return () => {

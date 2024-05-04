@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
             <Navbar></Navbar>
             {children}
           </main>
-          <AudioPlayer></AudioPlayer>
+          {/* <AudioPlayer></AudioPlayer> */}
         </AppProvider>
       </body>
     </html>
