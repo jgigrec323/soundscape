@@ -1,7 +1,10 @@
 // db.js
 import { MongoClient } from "mongodb";
 
-const uri = "mongodb://localhost:27017/soundscape";
+//const uri = "mongodb://localhost:27017/soundscape";
+
+const uri =
+  "mongodb+srv://jeangalanty:jeangalanty@cluster0.nobrvcc.mongodb.net/soundscape?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri);
 
