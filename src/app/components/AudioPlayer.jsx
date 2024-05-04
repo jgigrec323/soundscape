@@ -26,13 +26,25 @@ function AudioPlayer() {
     const togglePlayPause = () => {
         const audio = audioRef.current;
         if (audio.paused) {
-            audio.play();
-            setIsPlaying(true);
+            playTrack();
         } else {
-            audio.pause();
-            setIsPlaying(false);
+            pauseTrack();
         }
         localStorage.setItem('isPlaying', JSON.stringify(!isPlaying));
+    };
+
+    // Function to play the track
+    const playTrack = () => {
+        const audio = audioRef.current;
+        audio.play();
+        setIsPlaying(true);
+    };
+
+    // Function to pause the track
+    const pauseTrack = () => {
+        const audio = audioRef.current;
+        audio.pause();
+        setIsPlaying(false);
     };
 
     // Handle volume change
@@ -72,7 +84,7 @@ function AudioPlayer() {
         setSliderValue(0);
     }
 
-    // Load and play the current song
+    // Load the current song
     function loadTrack() {
         clearInterval(updateTimerRef.current);
         resetValues();
@@ -81,7 +93,7 @@ function AudioPlayer() {
             audio.pause(); // Pause current song
             audio.src = currentSong.file;
             audio.load();
-            audio.play(); // Start playing immediately
+            //playTrack()
             updateTimerRef.current = setInterval(seekUpdate, 1000);
         }
     }
@@ -113,6 +125,8 @@ function AudioPlayer() {
         }
         setCurrentSong(allSongs[nextIndex]);
         setCurrentSongIndex(nextIndex);
+        loadTrack(); // Load the next song
+        playTrack(); // Play the next song
     };
 
     // Play previous song
@@ -123,6 +137,8 @@ function AudioPlayer() {
         }
         setCurrentSong(allSongs[prevIndex]);
         setCurrentSongIndex(prevIndex);
+        loadTrack(); // Load the previous song
+        playTrack(); // Play the previous song
     };
 
     // Handle audio events (play, pause, ended)
