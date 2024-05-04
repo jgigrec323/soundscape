@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  background-color: $main-color;
+  display: flex;
+  color: #fff;
+  & main {
+    padding: 7rem 4rem 0rem 4rem;
+    width: calc(100vw - $sidebar-w);
+  }
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  background-color: $secondary-color;
+  color: $main-color;
+  font-weight: bold;
+}
+
+input.searchI {
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 2px solid $secondary-color;
+  padding: 1rem 0;
+  color: $secondary-color;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  &::placeholder {
+    color: $secondary-color;
+  }
+}

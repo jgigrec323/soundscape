@@ -1,0 +1,148 @@
+section.playlist {
+  position: relative;
+  & .header {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    & h2 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: $secondary-color;
+      display: inline;
+    }
+    & button {
+      transform: translateY(-8px);
+    }
+  }
+  & .listOfPlaylist {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 3rem;
+    column-gap: 3rem;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    & li {
+      background-color: rgba($secondary-color, $alpha: 0.1);
+      height: 10rem;
+      padding: 2rem;
+      border-radius: 1rem;
+      cursor: pointer;
+      & > h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+      & p {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+.createPlaylist {
+  background-color: $secondary-color;
+  height: 45vh;
+  width: 40rem;
+  padding: 3rem;
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  border-radius: 1rem;
+  color: $main-color;
+  & > h3 {
+    font-size: 2rem;
+    margin-bottom: 4rem;
+  }
+  & form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    & input {
+      border: none;
+      outline: none;
+      background: none;
+      border-bottom: 2px solid $main-color;
+      padding: 1rem 0;
+      color: $main-color;
+      font-size: 1.5rem;
+      &::placeholder {
+        color: $main-color;
+      }
+    }
+    & button {
+      margin-top: 2rem;
+      background-color: $main-color;
+      color: $secondary-color;
+    }
+  }
+}
+
+.playlistPage {
+  & .top {
+    display: flex;
+    align-items: center;
+    gap: 10rem;
+    margin-bottom: 3rem;
+    & .left {
+      & > h1 {
+        color: $secondary-color;
+        font-size: 5rem;
+      }
+      & p {
+        font-size: 2rem;
+      }
+    }
+    & .right {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+  & .bottom {
+    position: relative;
+    & .addSongToPlaylist {
+      position: absolute;
+      width: 100%;
+      background-color: $secondary-color;
+      top: 0;
+      padding: 2rem;
+      border-radius: 1rem;
+      color: $main-color !important;
+      height: calc(100vh - 28rem);
+      overflow: scroll;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      & > h3 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      & > input {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 1.5rem;
+        color: $main-color !important;
+        border-bottom: 2px solid $main-color;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        width: 45%;
+        &::placeholder {
+          color: $main-color;
+        }
+      }
+      & .song {
+        & .title {
+          & p {
+            color: $main-color !important;
+          }
+        }
+        & .btn {
+          background-color: $main-color !important;
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}

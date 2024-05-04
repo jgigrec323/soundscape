@@ -1,0 +1,17 @@
+nav {
+  height: 5rem;
+  display: flex;
+  flex-direction: row-reverse;
+  & .profile {
+    height: 45px;
+    width: 45px;
+    background-color: $secondary-color;
+    color: $main-color;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 2rem;
+  }
+}

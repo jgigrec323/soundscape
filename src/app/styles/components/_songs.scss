@@ -1,0 +1,51 @@
+section.songs {
+  display: flex;
+  margin-top: 2rem;
+  padding: 0 1rem;
+  & .left {
+    flex: 2;
+    height: calc(100vh - 22rem);
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    & .listOfSongs ul {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+  }
+}
+
+.song {
+  display: flex;
+  padding: 1rem 1rem;
+  font-size: 1.5rem;
+  & .index {
+    width: 10%;
+  }
+  & .title {
+    width: 35%;
+    & h4 {
+      font-size: 2rem;
+    }
+    & p {
+      color: rgba($white, $alpha: 0.5);
+    }
+  }
+  & .album {
+    width: 25%;
+    font-size: 1.9rem;
+  }
+  & .duration {
+    width: 10%;
+    text-align: right;
+  }
+  .actionsBtn {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-left: 2rem;
+    transform: translateY(-10px);
+  }
+}

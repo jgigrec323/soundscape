@@ -1,0 +1,133 @@
+.audioPlayer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  padding: 0 4rem;
+  background-color: rgba($black, $alpha: 0.3);
+  & .left {
+    width: 20%;
+    & .songTitle {
+      font-size: 2.2rem;
+      letter-spacing: 0.15rem;
+      color: $secondary-color;
+    }
+    & .songArtist {
+      font-size: 1.5rem;
+    }
+  }
+  & .right {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & .controls {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      & > div {
+        height: 40px;
+        width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $secondary-color;
+        font-size: 1.5rem;
+        border-radius: 50%;
+        color: $main-color;
+        &:nth-child(2) {
+          height: 50px;
+          width: 50px;
+        }
+      }
+    }
+    & .infos {
+      width: 55%;
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      & .progressBar {
+        position: relative;
+        width: 80%;
+        & #value {
+          position: absolute;
+          height: 7px;
+          background-color: $secondary-color;
+          top: 2px;
+          border-radius: 1rem;
+        }
+        & > input {
+          width: 100%;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          height: 7px;
+          border-radius: 1rem;
+          background: $white;
+          color: $secondary-color;
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: $secondary-color;
+            cursor: pointer;
+            border-radius: 50%;
+          }
+        }
+      }
+      & .timeProgress {
+        font-size: 1.8rem;
+      }
+    }
+    & .othersControls {
+      display: flex;
+      font-size: 2rem;
+      gap: 2rem;
+      width: 17%;
+      & .audioControls {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        width: 80%;
+        & .progressBar {
+          width: 80%;
+          position: relative;
+          background-color: red;
+          & #value {
+            position: absolute;
+            height: 7px;
+            background-color: $secondary-color;
+            top: 2px;
+            border-radius: 1rem;
+          }
+          & > input {
+            position: relative;
+            width: 100%;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            height: 7px;
+            border-radius: 1rem;
+            background: $white;
+            color: $secondary-color;
+            &::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              appearance: none;
+              width: 18px;
+              height: 18px;
+              background: $secondary-color;
+              cursor: pointer;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
