@@ -25,3 +25,27 @@ section.listOfGenres {
     }
   }
 }
+
+.genrePage {
+  & .top {
+    margin-bottom: 2rem;
+    & h3 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: $secondary-color;
+    }
+    & p {
+      font-size: 2rem;
+      & span {
+        color: $secondary-color;
+      }
+    }
+  }
+  & .bottom {
+    height: calc(100vh - 40vh);
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+}

@@ -1,14 +1,27 @@
-import React from 'react'
+import React from 'react';
+import { useRouter } from 'next/navigation';
 
-function Genres({ name, img }) {
+function Genres({ genre }) {
+    const router = useRouter();
+
+    // Function to format genre name
+    const formatGenreName = (name) => {
+        return name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
+    };
+
+
+    const handleClick = () => {
+        router.push(`/genres/${formatGenreName(genre.genre)}`);
+    };
+
     return (
-        <div className="genre">
+        <div className="genre" onClick={handleClick}>
             <div className="top">
-                <img src="https://media.istockphoto.com/id/92026251/fr/photo/hip-hop-musicien.jpg?s=612x612&w=0&k=20&c=-7HvM-t4xE4w2lZ5tO7cN5vJTlMhgZAob2T4Ok_pJWM=" alt="rap" />
+                <img src={genre.image} alt="rap" />
             </div>
-            <p>{name}</p>
+            <p>{genre.genre}</p>
         </div>
-    )
+    );
 }
 
-export default Genres
+export default Genres;

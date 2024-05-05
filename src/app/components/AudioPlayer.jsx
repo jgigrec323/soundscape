@@ -26,25 +26,13 @@ function AudioPlayer() {
     const togglePlayPause = () => {
         const audio = audioRef.current;
         if (audio.paused) {
-            playTrack();
+            audio.play();
+            setIsPlaying(true);
         } else {
-            pauseTrack();
+            audio.pause();
+            setIsPlaying(false);
         }
         localStorage.setItem('isPlaying', JSON.stringify(!isPlaying));
-    };
-
-    // Function to play the track
-    const playTrack = () => {
-        const audio = audioRef.current;
-        audio.play();
-        setIsPlaying(true);
-    };
-
-    // Function to pause the track
-    const pauseTrack = () => {
-        const audio = audioRef.current;
-        audio.pause();
-        setIsPlaying(false);
     };
 
     // Handle volume change
@@ -84,7 +72,7 @@ function AudioPlayer() {
         setSliderValue(0);
     }
 
-    // Load the current song
+    // Load and play the current song
     function loadTrack() {
         clearInterval(updateTimerRef.current);
         resetValues();
@@ -93,7 +81,7 @@ function AudioPlayer() {
             audio.pause(); // Pause current song
             audio.src = currentSong.file;
             audio.load();
-            //playTrack()
+            audio.play(); // Start playing immediately
             updateTimerRef.current = setInterval(seekUpdate, 1000);
         }
     }
@@ -125,8 +113,6 @@ function AudioPlayer() {
         }
         setCurrentSong(allSongs[nextIndex]);
         setCurrentSongIndex(nextIndex);
-        loadTrack(); // Load the next song
-        playTrack(); // Play the next song
     };
 
     // Play previous song
@@ -137,8 +123,6 @@ function AudioPlayer() {
         }
         setCurrentSong(allSongs[prevIndex]);
         setCurrentSongIndex(prevIndex);
-        loadTrack(); // Load the previous song
-        playTrack(); // Play the previous song
     };
 
     // Handle audio events (play, pause, ended)
@@ -149,9 +133,9 @@ function AudioPlayer() {
         audio.addEventListener('ended', () => {
             setIsPlaying(false);
             // Play next song if loop is on, else do nothing
-            /*  if (loop) {
-                 playNextSong();
-             } */
+            if (loop) {
+                playNextSong();
+            }
         });
 
         return () => {
@@ -217,17 +201,16 @@ function AudioPlayer() {
                     <FontAwesomeIcon icon={faRepeat} />
                     <div className="audioControls">
                         <FontAwesomeIcon icon={faVolumeHigh} />
-                        <div className='progressBar'>
-                            <input
-                                type="range"
-                                className="volume_slider"
-                                min="0"
-                                max="100"
-                                value={volume}
-                                onChange={handleVolumeChange}
-                            />
-                            <div style={{ width: `${volume}%` }} id="value"></div>
-                        </div>
+
+                        <input
+                            type="range"
+                            className="volume_slider"
+                            min="0"
+                            max="100"
+                            value={volume}
+                            onChange={handleVolumeChange}
+                        />
+
                     </div>
                 </div>
             </div>

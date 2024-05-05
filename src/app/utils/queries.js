@@ -42,6 +42,30 @@ export const getAllSongs = async () => {
     throw error;
   }
 };
+export const getArtists = async () => {
+  try {
+    const response = await fetch("/api/artists", {
+      method: "GET",
+    });
+    const body = await response.json();
+
+    return body;
+  } catch (error) {
+    throw error;
+  }
+};
+export const getAllGenres = async () => {
+  try {
+    const response = await fetch("/api/genre", {
+      method: "GET",
+    });
+    const body = await response.json();
+
+    return body;
+  } catch (error) {
+    throw error;
+  }
+};
 export const getAllAlbums = async () => {
   try {
     const response = await fetch("/api/albums", {
@@ -87,6 +111,45 @@ export const getSongsByPlaylistId = async (id) => {
     const response = await fetch(`/api/playlists/getSongByPlaylistId/${id}`, {
       method: "GET",
     });
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    throw error;
+  }
+};
+export const getSongsByGenre = async (genre) => {
+  try {
+    const response = await fetch(`/api/genre/songsByGenre/${genre}`, {
+      method: "GET",
+    });
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    throw error;
+  }
+};
+export const getSongsTotalByGenre = async (genre) => {
+  try {
+    const response = await fetch(
+      `/api/genre/songsByGenre/${genre}/numberOfSongs`,
+      {
+        method: "GET",
+      }
+    );
+    const body = await response.json();
+    return body;
+  } catch (error) {
+    throw error;
+  }
+};
+export const getSongsAvg = async (genre) => {
+  try {
+    const response = await fetch(
+      `/api/genre/songsByGenre/${genre}/averageTime`,
+      {
+        method: "GET",
+      }
+    );
     const body = await response.json();
     return body;
   } catch (error) {

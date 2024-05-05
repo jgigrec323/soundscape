@@ -94,37 +94,25 @@
         align-items: center;
         gap: 0.8rem;
         width: 80%;
-        & .progressBar {
-          width: 80%;
+        & > input {
           position: relative;
-          background-color: red;
-          & #value {
-            position: absolute;
-            height: 7px;
-            background-color: $secondary-color;
-            top: 2px;
-            border-radius: 1rem;
-          }
-          & > input {
-            position: relative;
-            width: 100%;
+          width: 100%;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          height: 7px;
+          border-radius: 1rem;
+          background: $white;
+          color: $secondary-color;
+          &::-webkit-slider-thumb {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            height: 7px;
-            border-radius: 1rem;
-            background: $white;
-            color: $secondary-color;
-            &::-webkit-slider-thumb {
-              -webkit-appearance: none;
-              -moz-appearance: none;
-              appearance: none;
-              width: 18px;
-              height: 18px;
-              background: $secondary-color;
-              cursor: pointer;
-              border-radius: 50%;
-            }
+            width: 18px;
+            height: 18px;
+            background: $secondary-color;
+            cursor: pointer;
+            border-radius: 50%;
           }
         }
       }

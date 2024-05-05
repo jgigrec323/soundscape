@@ -7,17 +7,7 @@ function SuggestedSongs() {
     const [suggestedSongs, setSuggestedSongs] = useState([])
     const [areSongsFetched, setAreSongsFetched] = useState(false)
 
-    const getSongs = async () => {
-        const response = await getAllSongs()
 
-        if (response.songs) {
-            setSongs(response.songs)
-            setAreSongsFetched(true)
-            suggestSongs(response.songs)
-        } else {
-            alert("Failed to fetch songs")
-        }
-    }
 
     const suggestSongs = (songs) => {
         const shuffledSongs = songs.sort(() => Math.random() - 0.5)
@@ -26,8 +16,19 @@ function SuggestedSongs() {
     }
 
     useEffect(() => {
+        const getSongs = async () => {
+            const response = await getAllSongs()
+
+            if (response.songs) {
+                setSongs(response.songs)
+                setAreSongsFetched(true)
+                suggestSongs(response.songs)
+            } else {
+                console.log("Failed to fetch songs")
+            }
+        }
         getSongs()
-    }, [])
+    }, [setSongs])
 
     return (
         <div className='suggestedSongs'>

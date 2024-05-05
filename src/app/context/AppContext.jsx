@@ -25,7 +25,7 @@ export const AppProvider = ({ children }) => {
             setAreSongsFetched(true)
         }
         else {
-            console.log("failded to get all songs")
+            console.log("failed to get all songs")
         }
     }
     useEffect(() => {

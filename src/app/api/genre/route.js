@@ -1,25 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase, closeConnection } from "@/app/utils/mongodb";
 
-export async function POST(request) {
+export async function GET() {
   const db = await connectToDatabase();
-
   try {
-    const { username, password } = await request.json();
-    const usersCollection = db.collection("users");
-
-    const user = await usersCollection.findOne({ username, password });
-
-    if (!user) {
+    const genres = await db.collection("genres").find().toArray();
+    console.log(genres);
+    if (!genres) {
       await closeConnection();
+
       return NextResponse.json({
-        error: "User not found",
+        message: "Nothing found",
       });
     }
+
     return NextResponse.json({
-      message: "User logged successfully",
-      userId: user._id,
-      username,
+      message: "Genres fetched",
+      genres,
     });
   } catch (error) {
     console.error(error);

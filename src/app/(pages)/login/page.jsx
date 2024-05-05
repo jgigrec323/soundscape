@@ -16,6 +16,7 @@ function Login() {
 
         if (response.userId) {
             localStorage.setItem("userId", response.userId)
+            localStorage.setItem("username", response.username)
             setIsLoggedIn(true);
             router.push("/")
         }

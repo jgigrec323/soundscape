@@ -22,6 +22,7 @@ function Register() {
 
         if (response.userId) {
             localStorage.setItem("userId", response.userId)
+            localStorage.setItem("username", response.username)
             router.push("/")
         }
         else {
