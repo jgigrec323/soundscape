@@ -69,7 +69,7 @@ function AudioPlayer() {
     function resetValues() {
         currentTime.current.textContent = '0:00';
         durationTime.current.textContent = '0:00';
-        setSliderValue(0);
+        setSliderValue(0); // Added this line to reset the slider
     }
 
     // Load and play the current song
@@ -81,8 +81,10 @@ function AudioPlayer() {
             audio.pause(); // Pause current song
             audio.src = currentSong.file;
             audio.load();
-
-            updateTimerRef.current = setInterval(seekUpdate, 1000);
+            if (isPlaying) {
+                audio.play();
+                updateTimerRef.current = setInterval(seekUpdate, 1000);
+            }
         }
     }
 
@@ -155,13 +157,13 @@ function AudioPlayer() {
         setCurrentSong(storedCurrentSong);
     }, [setCurrentSong, setIsPlaying]);
 
-    // Load track when currentSong changes
+    // Load track only when currentSong changes
     useEffect(() => {
         loadTrack();
         return () => {
             clearInterval(updateTimerRef.current); // Clear the interval when the component unmounts
         };
-    }, [currentSong]);
+    }, [currentSong]); // Only trigger when currentSong changes
 
     return (
         <div className="audioPlayer">
