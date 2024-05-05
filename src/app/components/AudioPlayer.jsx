@@ -18,7 +18,7 @@ function AudioPlayer() {
     const [sliderValue, setSliderValue] = useState(0);
     const currentTime = useRef();
     const durationTime = useRef();
-    const audioRef = useRef(new Audio());
+    const audioRef = useRef(typeof window !== 'undefined' ? new Audio() : null);
     const updateTimerRef = useRef();
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
