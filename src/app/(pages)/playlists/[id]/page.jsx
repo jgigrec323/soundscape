@@ -1,5 +1,6 @@
 "use client"
 import AddSongToPlaylist from '@/app/components/AddSongToPlaylist'
+import BackButton from '@/app/components/BackButton'
 import DeleteButton from '@/app/components/DeleteButton'
 import ListOfSongs from '@/app/components/ListOfSongs'
 import { getSongsByPlaylistId } from '@/app/utils/queries'
@@ -30,28 +31,31 @@ function PlaylistPage({ params }) {
         getSongs()
     }, [])
     return (
-        <section className='playlistPage'>
-            <div className="top">
-                <div className="left">
-                    <h1>{name}</h1>
-                    <p>{description}</p>
+        <>
+            <BackButton></BackButton>
+            <section className='playlistPage'>
+                <div className="top">
+                    <div className="left">
+                        <h1>{name}</h1>
+                        <p>{description}</p>
+                    </div>
+                    <div className="right">
+                        <button onClick={() => { setAddSong(!addSong) }} className='btn'>{!addSong ? "Add song" : "Close"}</button>
+                        <DeleteButton id={id}>Delete playlist</DeleteButton>
+                        <button className='btn'>Edit</button>
+                    </div>
                 </div>
-                <div className="right">
-                    <button onClick={() => { setAddSong(!addSong) }} className='btn'>{!addSong ? "Add song" : "Close"}</button>
-                    <DeleteButton id={id}>Delete playlist</DeleteButton>
-                    <button className='btn'>Edit</button>
-                </div>
-            </div>
-            <div className="bottom">
-                {areSongsFetched && songs.length != 0 ?
-                    <>
-                        <ListOfSongs searchable={true} updateSong={getSongs} addable={false} deletable={true} songs={songs}></ListOfSongs>
-                    </> : <p>No songs found</p>
-                }
+                <div className="bottom">
+                    {areSongsFetched && songs.length != 0 ?
+                        <>
+                            <ListOfSongs searchable={true} updateSong={getSongs} addable={false} deletable={true} songs={songs}></ListOfSongs>
+                        </> : <p>No songs found</p>
+                    }
 
-                {addSong && <AddSongToPlaylist updateSong={getSongs} ></AddSongToPlaylist>}
-            </div>
-        </section>
+                    {addSong && <AddSongToPlaylist updateSong={getSongs} ></AddSongToPlaylist>}
+                </div>
+            </section>
+        </>
     )
 }
 

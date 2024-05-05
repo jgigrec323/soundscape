@@ -1,4 +1,5 @@
 "use client"
+import BackButton from '@/app/components/BackButton'
 import ListOfSongs from '@/app/components/ListOfSongs'
 import { getSongsAvg, getSongsByGenre, getSongsTotalByGenre } from '@/app/utils/queries'
 import React, { useEffect, useState } from 'react'
@@ -66,18 +67,21 @@ function GenrePage({ params }) {
     }, [])
 
     return (
-        <section className="genrePage">
-            <div className="top">
-                <h3>{formattedGenre}</h3>
-                <div className="right">
-                    <p>Total : <span>{numberOfSong}</span></p>
-                    <p>Average duration : <span>{formatDuration(avgDuration)}</span></p>
+        <>
+            <BackButton></BackButton>
+            <section className="genrePage">
+                <div className="top">
+                    <h3>{formattedGenre}</h3>
+                    <div className="right">
+                        <p>Total : <span>{numberOfSong}</span></p>
+                        <p>Average duration : <span>{formatDuration(avgDuration)}</span></p>
+                    </div>
                 </div>
-            </div>
-            <div className="bottom">
-                {areSongsFetched && <ListOfSongs searchable={true} songs={songs}></ListOfSongs>}
-            </div>
-        </section>
+                <div className="bottom">
+                    {areSongsFetched && <ListOfSongs searchable={true} songs={songs}></ListOfSongs>}
+                </div>
+            </section>
+        </>
     )
 }
 

@@ -57,3 +57,18 @@ input.searchI {
     color: $secondary-color;
   }
 }
+
+.backButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: $secondary-color;
+  color: $main-color;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  top: 10%;
+  cursor: pointer;
+}

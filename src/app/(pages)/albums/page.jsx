@@ -1,5 +1,6 @@
 "use client"
 import AlbumsList from '@/app/components/AlbumsList'
+import BackButton from '@/app/components/BackButton'
 import { getAllAlbums } from '@/app/utils/queries'
 import React, { useState, useEffect } from 'react'
 
@@ -23,6 +24,7 @@ function Albums() {
     }, [])
     return (
         <div>
+            <BackButton></BackButton>
             {areDataFetched &&
                 <>
                     <AlbumsList albums={albums}></AlbumsList>

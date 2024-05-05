@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllPlaylistByUser } from '@/app/utils/queries';
 import ListOfPlaylists from '@/app/components/ListOfPlaylists';
 import CreatePlaylist from '@/app/components/CreatePlaylist';
+import BackButton from '@/app/components/BackButton';
 
 function Playlists() {
     const [playlists, setPlaylists] = useState([]);
@@ -32,18 +33,21 @@ function Playlists() {
     }, []);
 
     return (
-        <section className='playlist'>
-            <div className="header">
-                <h2>My Playlists</h2>
-                <button className='btn' onClick={() => { setAddPlaylist(!addPlaylist) }}>{addPlaylist === false ? "Create a playlist" : "Close"}</button>
-            </div>
-            {areDataFetched && playlists.length > 0 ? (
-                <ListOfPlaylists playlists={playlists} />
-            ) : (
-                <p>No playlists yet</p>
-            )}
-            {addPlaylist && <CreatePlaylist fetchData={fetchData}></CreatePlaylist>}
-        </section>
+        <>
+
+            <section className='playlist'>
+                <div className="header">
+                    <h2>My Playlists</h2>
+                    <button className='btn' onClick={() => { setAddPlaylist(!addPlaylist) }}>{addPlaylist === false ? "Create a playlist" : "Close"}</button>
+                </div>
+                {areDataFetched && playlists.length > 0 ? (
+                    <ListOfPlaylists playlists={playlists} />
+                ) : (
+                    <p>No playlists yet</p>
+                )}
+                {addPlaylist && <CreatePlaylist fetchData={fetchData}></CreatePlaylist>}
+            </section>
+        </>
     );
 }
 

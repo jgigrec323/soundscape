@@ -1,4 +1,5 @@
 "use client"
+import BackButton from '@/app/components/BackButton'
 import ListOfSongs from '@/app/components/ListOfSongs'
 import { getAllSongs } from '@/app/utils/queries'
 import React, { useEffect, useState } from 'react'
@@ -21,15 +22,18 @@ function Songs() {
         getSongs()
     }, [])
     return (
-        <section className='songs'>
-            <div className="left" >
-                {areSongsFetched &&
-                    <>
-                        <ListOfSongs searchable={true} songs={songs}></ListOfSongs>
-                    </>
-                }
-            </div>
-        </section>
+        <>
+            <BackButton></BackButton>
+            <section className='songs'>
+                <div className="left" >
+                    {areSongsFetched &&
+                        <>
+                            <ListOfSongs searchable={true} songs={songs}></ListOfSongs>
+                        </>
+                    }
+                </div>
+            </section>
+        </>
     )
 }
 
