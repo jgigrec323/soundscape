@@ -81,7 +81,7 @@ function AudioPlayer() {
             audio.pause(); // Pause current song
             audio.src = currentSong.file;
             audio.load();
-            audio.play(); // Start playing immediately
+
             updateTimerRef.current = setInterval(seekUpdate, 1000);
         }
     }
