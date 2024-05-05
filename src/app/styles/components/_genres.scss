@@ -49,3 +49,14 @@ section.listOfGenres {
     -ms-overflow-style: none;
   }
 }
+
+@media screen and (max-width: 1285px) {
+  section.listOfGenres {
+    & .genre {
+      & .top {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  }
+}
